@@ -1,6 +1,7 @@
 package com.thoughtworks.capacity.gtb.mvc.controller;
 
 import com.thoughtworks.capacity.gtb.mvc.entity.User;
+import com.thoughtworks.capacity.gtb.mvc.exception.NameAlreadyExitException;
 import com.thoughtworks.capacity.gtb.mvc.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    public void registerUser (@Valid @RequestBody User user){
+    public void registerUser (@Valid @RequestBody User user) throws NameAlreadyExitException {
         userService.registerUser(user);
     }
 }

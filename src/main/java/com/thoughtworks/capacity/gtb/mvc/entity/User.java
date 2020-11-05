@@ -13,11 +13,11 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @NotNull(message = ("UserName must not be null"))
+    @NotNull(message = ("用户名不为空"))
     @Length(min =3,max = 10)
-    @Pattern(regexp =  "\\w+$")
+    @Pattern(regexp =  "\\w+$",message = ("用户名不合法"))
     private String username;
-    @NotNull(message = ("Password must not be null"))
+    @NotNull(message = ("密码不为空"))
     @Length(min =5,max = 12)
     private String password;
     @Email
