@@ -2,6 +2,8 @@ package com.thoughtworks.capacity.gtb.mvc.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,6 +15,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+    private Integer id;
     @NotNull(message = ("用户名不为空"))
     @Length(min =3,max = 10)
     @Pattern(regexp =  "\\w+$",message = ("用户名不合法"))

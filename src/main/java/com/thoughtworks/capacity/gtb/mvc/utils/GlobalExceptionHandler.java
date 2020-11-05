@@ -1,6 +1,7 @@
 package com.thoughtworks.capacity.gtb.mvc.utils;
 
 import com.thoughtworks.capacity.gtb.mvc.entity.ErrorResult;
+import com.thoughtworks.capacity.gtb.mvc.exception.LoginErrorException;
 import com.thoughtworks.capacity.gtb.mvc.exception.NameAlreadyExitException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +25,12 @@ public class GlobalExceptionHandler {
         String message="名字已经存在";
         ErrorResult errorResult=new ErrorResult(message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
+    }
+
+    @ExceptionHandler(LoginErrorException.class)
+    public ResponseEntity<ErrorResult> handle(LoginErrorException ex){
+        String message="用户名或密码错误";
+        ErrorResult errorResult=new ErrorResult(message);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
     }
 }
